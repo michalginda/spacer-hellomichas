@@ -8,7 +8,7 @@
         <ul>
             <li v-for="item in results" :key="item.data[0].nasa_id">
                 <p>{{ item.data[0].description }}</p>
-                <!-- <img v-bind:src={{ item.links[0].href }}/> -->
+                <img v-bind:src="item.links[0].href"/>
             </li>
         </ul>
     </div>
@@ -29,6 +29,7 @@ export default {
     };
   },
   methods: {
+    // eslint-disable-next-line
     handleInput: debounce(function () {
       axios.get(`${API}?q=${this.searchValue}&media_type=image`)
         .then((response) => {
